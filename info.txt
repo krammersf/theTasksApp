@@ -1,0 +1,26 @@
+### Backend
+
+dotnet new webapi -n iCognitus_test
+
+cd iCognitus_test
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+
+
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+
+dotnet build
+
+dotnet run
+
+http://localhost:5288/swagger/index.html
+
+
+dotnet ef migrations add AtualizarModelo
+dotnet build
+dotnet ef migrations add FixNullableIssue
+dotnet ef database update

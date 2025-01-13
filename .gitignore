@@ -1,0 +1,31 @@
+# .NET
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.ilk
+*.log
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.vspxproj
+*.dbmdl
+*.jfm
+.vscode/
+.vs/
+node_modules/
+wwwroot/
+
+# Angular
+node_modules/
+dist/
+.angular/
+.idea/
+*.iml
+*.log
+*.tsbuildinfo
