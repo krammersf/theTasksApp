@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using TaskApi.Models;
+using iCognitus_test.Models;
 
-namespace TaskApi.Data
+namespace iCognitus_test.Data
 {
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        // Tornando a propriedade anulável para evitar o erro CS8618
         public DbSet<TaskItem>? Tasks { get; set; }
+        public DbSet<User>? Users { get; set; }
     }
 }

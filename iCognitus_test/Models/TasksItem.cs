@@ -1,4 +1,4 @@
-namespace TaskApi.Models
+namespace iCognitus_test.Models
 {
     public class TaskItem
     {

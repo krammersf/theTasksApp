@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using TaskApi.Data;
-using TaskApi.Models;
+using iCognitus_test.Data;
+using iCognitus_test.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization; 
 
 namespace TaskApi.Controllers
 {
 	[Route("tasks")]
 	[ApiController]
+	//[Authorize] 
 	public class TasksController : ControllerBase
 	{
 		private readonly DataContext _context;

@@ -6,7 +6,7 @@ cd iCognitus_test
 
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
-
+dotnet add package BCrypt.Net-Next
 
 
 dotnet ef migrations add InitialCreate
