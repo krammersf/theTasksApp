@@ -1,14 +1,32 @@
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+
 namespace iCognitus_test.Models
 {
-    public class TaskItem
-    {
-        public int Id { get; set; }
+	public class TaskItem
+	{
+		public int Id { get; set; }
 
-        public string? Title { get; set; }
-        public string? Description { get; set; }
+		public string? Title { get; set; }
+		public string? Description { get; set; }
 
-        public static readonly List<string> ValidStatuses = new List<string> { "Pendente", "Em Progresso", "Concluída" };
+		[ValidStatus(ErrorMessage = "O status fornecido não é válido.")]
+		public string Status { get; set; } = "Pendente";
 
-        public string Status { get; set; } = "Pendente"; 
-    }
+
+		public static readonly List<string> ValidStatuses = new() { "Pendente", "Em Progresso", "Concluída" };
+	}
+
+
+	public class ValidStatusAttribute : ValidationAttribute
+	{
+		public override bool IsValid(object? value)
+		{
+			if (value is string status)
+			{
+				return TaskItem.ValidStatuses.Contains(status);
+			}
+			return false;
+		}
+	}
 }

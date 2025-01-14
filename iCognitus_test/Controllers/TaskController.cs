@@ -64,6 +64,11 @@ namespace TaskApi.Controllers
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskItem updatedTask)
 		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);  // Garante que os erros de validação são retornados
+			}
+
 			if (_context.Tasks == null) return NotFound();
 			var task = await _context.Tasks.FindAsync(id);
 			if (task == null) return NotFound();
