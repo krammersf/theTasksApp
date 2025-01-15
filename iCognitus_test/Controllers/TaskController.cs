@@ -4,7 +4,7 @@ using iCognitus_test.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization; 
 
-namespace TaskApi.Controllers
+namespace TaskItem.Controllers
 {
 	[Route("tasks")]
 	[ApiController]
@@ -22,9 +22,48 @@ namespace TaskApi.Controllers
 		[HttpGet]
 		public async Task<IActionResult> GetAllTasks()
 		{
-			var tasks = await (_context.Tasks?.ToListAsync() ?? Task.FromResult(new List<TaskItem>()));
+			var tasks = await (_context.Tasks?.ToListAsync() ?? Task.FromResult(new List<iCognitus_test.Models.TaskItem>()));
 			return Ok(tasks);
 		}
+
+        // GET /tasks/pendentes -> Apenas tarefas pendentes
+        [HttpGet("pendentes")]
+        public async Task<IActionResult> GetPendentes()
+        {
+            if (_context.Tasks == null) return NotFound("A base de dados está vazia.");
+            
+            var pendentes = await _context.Tasks
+                .Where(t => t.Status == "Pendente")
+                .ToListAsync();
+            
+            return Ok(pendentes);
+        }
+
+		// GET /tasks/emprogresso -> Apenas tarefas em progresso
+        [HttpGet("emprogresso")]
+        public async Task<IActionResult> GetEmProgresso()
+        {
+            if (_context.Tasks == null) return NotFound("A base de dados está vazia.");
+            
+            var pendentes = await _context.Tasks
+                .Where(t => t.Status == "Em Progresso")
+                .ToListAsync();
+            
+            return Ok(pendentes);
+        }
+
+		// GET /tasks/concluida -> Apenas tarefas concluidas
+        [HttpGet("Concluida")]
+        public async Task<IActionResult> GetConcluida()
+        {
+            if (_context.Tasks == null) return NotFound("A base de dados está vazia.");
+            
+            var pendentes = await _context.Tasks
+                .Where(t => t.Status == "Concluída")
+                .ToListAsync();
+            
+            return Ok(pendentes);
+        }
 
 		// GET /tasks/{id}
 		[HttpGet("{id}")]
@@ -38,16 +77,16 @@ namespace TaskApi.Controllers
 
 		// POST /tasks
 		[HttpPost]
-		public async Task<IActionResult> CreateTask([FromBody] TaskItem taskItem)
+		public async Task<IActionResult> CreateTask([FromBody] iCognitus_test.Models.TaskItem taskItem)
 		{
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
 			}
 
-			if (taskItem.Status == null || !TaskItem.ValidStatuses.Contains(taskItem.Status))
+			if (taskItem.Status == null || !iCognitus_test.Models.TaskItem.ValidStatuses.Contains(taskItem.Status))
 			{
-				return BadRequest("Status inválido. Valores permitidos: Pendente, Em Progresso, Concluída.");
+				return base.BadRequest("Status inválido. Valores permitidos: Pendente, Em Progresso, Concluída.");
 			}
 
 			if (_context.Tasks == null)
@@ -62,7 +101,7 @@ namespace TaskApi.Controllers
 
 		// PUT /tasks/{id}
 		[HttpPut("{id}")]
-		public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskItem updatedTask)
+		public async Task<IActionResult> UpdateTask(int id, [FromBody] iCognitus_test.Models.TaskItem updatedTask)
 		{
 			if (!ModelState.IsValid)
 			{

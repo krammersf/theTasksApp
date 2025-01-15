@@ -7,7 +7,7 @@ namespace iCognitus_test.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<TaskItem>? Tasks { get; set; }
+        public DbSet<Models.TaskItem>? Tasks { get; set; }
         public DbSet<User>? Users { get; set; }
     }
 }
