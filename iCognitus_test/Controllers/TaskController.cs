@@ -8,7 +8,7 @@ namespace TaskItem.Controllers
 {
 	[Route("tasks")]
 	[ApiController]
-	//[Authorize] 
+	[Authorize] 
 	public class TasksController : ControllerBase
 	{
 		private readonly DataContext _context;
@@ -70,6 +70,7 @@ namespace TaskItem.Controllers
 		public async Task<IActionResult> GetTask(int id)
 		{
 			if (_context.Tasks == null) return NotFound();
+			if (_context.Tasks == null) return NotFound("A base de dados está vazia.");
 			var task = await _context.Tasks.FindAsync(id);
 			if (task == null) return NotFound();
 			return Ok(task);
@@ -94,6 +95,15 @@ namespace TaskItem.Controllers
 				return Problem("Entity set 'DataContext.Tasks' is null.");
 			}
 
+			var username = User?.Identity?.Name;
+			if (string.IsNullOrEmpty(username))  // Se o username for nulo ou vazio
+			{
+				return Unauthorized("Utilizador não autenticado.");
+			}
+
+			taskItem.CreatedBy = username;
+			taskItem.UpdatedBy = username;
+
 			_context.Tasks.Add(taskItem);
 			await _context.SaveChangesAsync();
 			return CreatedAtAction(nameof(GetTask), new { id = taskItem.Id }, taskItem);
@@ -103,18 +113,26 @@ namespace TaskItem.Controllers
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateTask(int id, [FromBody] iCognitus_test.Models.TaskItem updatedTask)
 		{
-			if (!ModelState.IsValid)
+			if (!ModelState.IsValid) return BadRequest(ModelState);
+
+			// Verificar se User e Identity não são nulos antes de acessar o Name
+			var username = User?.Identity?.Name;
+			if (string.IsNullOrEmpty(username))
 			{
-				return BadRequest(ModelState);  // Garante que os erros de validação são retornados
+				return Unauthorized("Utilizador não autenticado.");
 			}
-
 			if (_context.Tasks == null) return NotFound();
+			// Verifica se a tarefa existe
 			var task = await _context.Tasks.FindAsync(id);
-			if (task == null) return NotFound();
+			if (task == null) return NotFound("Tarefa não encontrada.");
 
+			// Atualizar os campos da tarefa
 			task.Title = updatedTask.Title;
 			task.Description = updatedTask.Description;
 			task.Status = updatedTask.Status;
+
+			// Atualizar o campo UpdatedBy
+			task.UpdatedBy = username;
 
 			await _context.SaveChangesAsync();
 			return Ok(task);

@@ -13,6 +13,8 @@ namespace iCognitus_test.Models
 		[ValidStatus(ErrorMessage = "O status fornecido não é válido.")]
 		public string Status { get; set; } = "Pendente";
 
+		public string CreatedBy { get; set; } = string.Empty;
+        public string UpdatedBy { get; set; } = string.Empty;
 
 		public static readonly List<string> ValidStatuses = new() { "Pendente", "Em Progresso", "Concluída" };
 	}
