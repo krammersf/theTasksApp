@@ -16,6 +16,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Adiciona o CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()   // Permite qualquer origem (pode ser restrito mais tarde)
+              .AllowAnyMethod()   // Permite qualquer método HTTP
+              .AllowAnyHeader();  // Permite qualquer cabeçalho
+    });
+});
 
 // JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -38,6 +48,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 var app = builder.Build();
 
+app.UseCors("AllowAll");
+
 // DB created
 using (var scope = app.Services.CreateScope())
 {
@@ -46,6 +58,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Middleware
+app.UseCors("AllowAll"); 
 app.UseAuthentication();  
 app.UseAuthorization();  
 

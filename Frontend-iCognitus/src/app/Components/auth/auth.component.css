@@ -1,0 +1,23 @@
+.centered-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+	width: 100%; /* Ocupa toda a largura */
+	text-align: center; /* Centraliza o texto */
+  }
+  
+  .button-spacing {
+	margin: 5px; /* Espaçamento entre os botões */
+  }
+  
+  .input-small {
+	margin-top: 20px;
+	width: 100%;
+	margin-bottom: 20px; /* Espaço de 20px entre os campos de entrada */
+  }
+  
+  .error-message {
+	white-space: pre-line; /* Preserva as quebras de linha na string */
+  }

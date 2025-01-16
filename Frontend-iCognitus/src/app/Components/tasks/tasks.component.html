@@ -1,0 +1,58 @@
+<!-- src/app/components/task-list/task-list.component.html -->
+<div class="task-list">
+	<h2>Lista de Tarefas</h2>
+  
+	<!-- Exibir um botão para criar uma nova tarefa -->
+	<button (click)="openCreateTaskModal()">Criar Tarefa</button>
+  
+	<!-- Exibir as tarefas -->
+	<table>
+	  <thead>
+		<tr>
+		  <th>Título</th>
+		  <th>Descrição</th>
+		  <th>Status</th>
+		  <th>Created By</th>
+		  <th>Updated By</th>
+		  <th>Ações</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr *ngFor="let task of tasks">
+		  <td>{{ task.title }}</td>
+		  <td>{{ task.description }}</td>
+		  <td>{{ task.status }}</td>
+		  <td>{{ task.createdBy}}</td>
+		  <td>{{ task.updatedBy}}</td>
+		  <td>
+			<button (click)="openEditTaskModal(task)">Editar</button>
+			<button (click)="deleteTask(task.id)">Deletar</button>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+  </div>
+  
+  <!-- Modal para Criar ou Editar Tarefa -->
+  <div *ngIf="isModalOpen" class="modal">
+	<div class="modal-content">
+	  <h3>{{ isEditing ? 'Editar Tarefa' : 'Criar Tarefa' }}</h3>
+	  <form (ngSubmit)="onSubmit()">
+		<label for="title">Título:</label>
+		<input type="text" id="title" [(ngModel)]="currentTask.title" name="title" required />
+  
+		<label for="description">Descrição:</label>
+		<textarea id="description" [(ngModel)]="currentTask.description" name="description" required></textarea>
+  
+		<label for="status">Status:</label>
+		<select id="status" [(ngModel)]="currentTask.status" name="status" required>
+		  <option value="Pendente">Pendente</option>
+		  <option value="Em Progresso">Em Progresso</option>
+		  <option value="Concluída">Concluída</option>
+		</select>
+  
+		<button type="submit">{{ isEditing ? 'Atualizar' : 'Criar' }}</button>
+		<button type="button" (click)="closeModal()">Cancelar</button>
+	  </form>
+	</div>
+  </div>
