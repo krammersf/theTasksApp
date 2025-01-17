@@ -1,58 +1,257 @@
-<!-- src/app/components/task-list/task-list.component.html -->
 <div class="task-list">
 	<h2>Lista de Tarefas</h2>
-  
-	<!-- Exibir um botão para criar uma nova tarefa -->
-	<button (click)="openCreateTaskModal()">Criar Tarefa</button>
-  
-	<!-- Exibir as tarefas -->
-	<table>
-	  <thead>
-		<tr>
-		  <th>Título</th>
-		  <th>Descrição</th>
-		  <th>Status</th>
-		  <th>Created By</th>
-		  <th>Updated By</th>
-		  <th>Ações</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		<tr *ngFor="let task of tasks">
-		  <td>{{ task.title }}</td>
-		  <td>{{ task.description }}</td>
-		  <td>{{ task.status }}</td>
-		  <td>{{ task.createdBy}}</td>
-		  <td>{{ task.updatedBy}}</td>
-		  <td>
-			<button (click)="openEditTaskModal(task)">Editar</button>
-			<button (click)="deleteTask(task.id)">Deletar</button>
-		  </td>
-		</tr>
-	  </tbody>
-	</table>
-  </div>
-  
-  <!-- Modal para Criar ou Editar Tarefa -->
-  <div *ngIf="isModalOpen" class="modal">
+	<mat-card>
+		<mat-card-header>
+			<div class="filter-row">
+				<mat-form-field appearance="outline">
+					<mat-label>Procurar Tasks</mat-label>
+					<input (keyup)="filterChange($event)" matInput placeholder="nome, email ou telefone">
+					<mat-icon matSuffix>search</mat-icon>
+				</mat-form-field>
+			</div>
+		</mat-card-header>
+		
+		<div>
+			<!-- Filtro por Status -->
+			<label for="statusFilter">Filtrar por Status:</label>
+			<select id="statusFilter" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+				<option value="Todos">Todos</option>
+				<option value="Pendente">Pendente</option>
+				<option value="Em Progresso">Em Progresso</option>
+				<option value="Concluída">Concluída</option>
+			</select>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Filtrar por Status:</mat-label> 
+				<mat-select id="statusFilter" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+
+				  <!-- <mat-option value="" disabled>Selecione o Status</mat-option>   -->
+				  <mat-option value="Todos">Todos</mat-option>
+				  <mat-option value="Pendente">Pendente</mat-option>
+				  <mat-option value="Em Progresso">Em Progresso</mat-option>
+				  <mat-option value="Concluída">Concluída</mat-option>
+				</mat-select>
+			  </mat-form-field>
+
+			
+
+			<!-- Exibir um botão para criar uma nova tarefa -->
+			<button type="button" class="btn btn-outline-success button-spacing button-spacing1"
+				(click)="openCreateTaskModal()">
+				<i class="fas fa-check"></i> Create Task
+			</button>
+		</div>
+		<!-- Mat-Table para Exibir as Tarefas -->
+		<!-- Mat-Table para Exibir as Tarefas -->
+		<mat-card-content>
+			<table class="mat-elevation-z8" matSort mat-table [dataSource]="dataSource">
+
+				<!-- Título da Tarefa -->
+				<ng-container matColumnDef="title">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+					<td mat-cell *matCellDef="let task">{{ task.title }}</td>
+				</ng-container>
+
+				<!-- Descrição da Tarefa -->
+				<ng-container matColumnDef="description">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+					<td mat-cell *matCellDef="let task">{{ task.description }}</td>
+				</ng-container>
+
+				<!-- Status da Tarefa -->
+				<ng-container matColumnDef="status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+					<td mat-cell *matCellDef="let task">{{ task.status }}</td>
+				</ng-container>
+
+				<!-- Criado por -->
+				<ng-container matColumnDef="createdBy">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Criado por</th>
+					<td mat-cell *matCellDef="let task">{{ task.createdBy }}</td>
+				</ng-container>
+
+				<!-- Atualizado por -->
+				<ng-container matColumnDef="updatedBy">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Atualizado por</th>
+					<td mat-cell *matCellDef="let task">{{ task.updatedBy }}</td>
+				</ng-container>
+
+				<!-- Ações (Editar e Excluir) -->
+				<ng-container matColumnDef="actions">
+					<th mat-header-cell *matHeaderCellDef>Ações</th>
+					<td mat-cell *matCellDef="let task">
+						<button class="btn btn-warning button-spacing" (click)="openEditTaskModal(task)">
+							<i class="fas fa-edit"></i>
+						</button>
+						<!-- <button type="submit" class="btn btn-outline-warning button-spacing button-spacing1">
+							<i class="fas fa-check"></i> Update
+						  </button> -->
+						<button class="btn btn-danger button-spacing" (click)="deleteTask(task.id)">
+							<i class="fas fa-trash"></i></button>
+					</td>
+				</ng-container>
+
+				<!-- Definição das células do cabeçalho e conteúdo -->
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+			<br>
+		</mat-card-content>
+
+		<!-- Paginação -->
+		<mat-paginator [length]="dataSource.data.length" [pageSize]="10"
+			[pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+	</mat-card>
+	<br><br>
+</div>
+
+<!-- Modal para Criar ou Editar Tarefa -->
+<div *ngIf="isModalOpen" class="modal">
 	<div class="modal-content">
-	  <h3>{{ isEditing ? 'Editar Tarefa' : 'Criar Tarefa' }}</h3>
-	  <form (ngSubmit)="onSubmit()">
-		<label for="title">Título:</label>
-		<input type="text" id="title" [(ngModel)]="currentTask.title" name="title" required />
-  
-		<label for="description">Descrição:</label>
-		<textarea id="description" [(ngModel)]="currentTask.description" name="description" required></textarea>
-  
-		<label for="status">Status:</label>
-		<select id="status" [(ngModel)]="currentTask.status" name="status" required>
-		  <option value="Pendente">Pendente</option>
-		  <option value="Em Progresso">Em Progresso</option>
-		  <option value="Concluída">Concluída</option>
-		</select>
-  
-		<button type="submit">{{ isEditing ? 'Atualizar' : 'Criar' }}</button>
-		<button type="button" (click)="closeModal()">Cancelar</button>
-	  </form>
+		<h3>{{ isEditing ? 'Editar Tarefa' : 'Criar Tarefa' }}</h3>
+		<form (ngSubmit)="onSubmit()">
+			<label for="title">Título:</label>
+			<input type="text" id="title" [(ngModel)]="currentTask.title" name="title" required />
+
+			<label for="description">Descrição:</label>
+			<textarea id="description" [(ngModel)]="currentTask.description" name="description" required></textarea>
+
+			<label for="status">Status:</label>
+			<select id="status" [(ngModel)]="currentTask.status" name="status" required>
+				<option value="Pendente">Pendente</option>
+				<option value="Em Progresso">Em Progresso</option>
+				<option value="Concluída">Concluída</option>
+			</select>
+
+			  <button type="submit" class="btn btn-outline-success button-spacing button-spacing1">
+				<i class="fas fa-check"></i> {{ isEditing ? 'Atualizar' : 'Criar' }}
+			  </button>
+			<button type="button" class="btn btn-outline-danger button-spacing button-spacing1" (click)="closeModal()">
+				<i class="fas fa-times"></i> Cancel
+			  </button>
+		</form>
 	</div>
-  </div>
+</div>
+
+
+
+
+<!-- <div class="task-list">
+	<h2>Lista de Tarefas</h2>
+	<mat-card>
+		<mat-card-header>
+			<div class="filter-row">
+				<mat-form-field appearance="outline">
+					<mat-label>Procurar Tasks</mat-label>
+					<input (keyup)="filterChange($event)" matInput placeholder="nome, email ou telefone">
+					<mat-icon matSuffix>search</mat-icon>
+				</mat-form-field>
+			</div>
+		</mat-card-header>
+		
+		<div>
+
+			<mat-form-field appearance="outline">
+				<mat-label>Filtrar por Status:</mat-label> 
+				<mat-select id="statusFilter" [(ngModel)]="selectedStatus" (change)="onStatusChange()">
+
+				  <mat-option value="" disabled>Selecione o Status</mat-option>  
+				  <mat-option value="Todos">Todos</mat-option>
+				  <mat-option value="Pendente">Pendente</mat-option>
+				  <mat-option value="Em Progresso">Em Progresso</mat-option>
+				  <mat-option value="Concluída">Concluída</mat-option>
+				</mat-select>
+			  </mat-form-field>
+
+
+			<button type="button" class="btn btn-outline-success button-spacing button-spacing1"
+				(click)="openCreateTaskModal()">
+				<i class="fas fa-check"></i> Create Task
+			</button>
+		</div>
+
+		<mat-card-content>
+			<table class="mat-elevation-z8" matSort mat-table [dataSource]="dataSource">
+
+
+				<ng-container matColumnDef="title">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+					<td mat-cell *matCellDef="let task">{{ task.title }}</td>
+				</ng-container>
+
+
+				<ng-container matColumnDef="description">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
+					<td mat-cell *matCellDef="let task">{{ task.description }}</td>
+				</ng-container>
+
+				<ng-container matColumnDef="status">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+					<td mat-cell *matCellDef="let task">{{ task.status }}</td>
+				</ng-container>
+
+	
+				<ng-container matColumnDef="createdBy">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Criado por</th>
+					<td mat-cell *matCellDef="let task">{{ task.createdBy }}</td>
+				</ng-container>
+
+	
+				<ng-container matColumnDef="updatedBy">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>Atualizado por</th>
+					<td mat-cell *matCellDef="let task">{{ task.updatedBy }}</td>
+				</ng-container>
+
+			
+				<ng-container matColumnDef="actions">
+					<th mat-header-cell *matHeaderCellDef>Ações</th>
+					<td mat-cell *matCellDef="let task">
+						<button class="btn btn-warning button-spacing" (click)="openEditTaskModal(task)">
+							<i class="fas fa-edit"></i>
+						</button>
+			
+						<button class="btn btn-danger button-spacing" (click)="deleteTask(task.id)">
+							<i class="fas fa-trash"></i></button>
+					</td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+			<br>
+		</mat-card-content>
+
+
+		<mat-paginator [length]="dataSource.data.length" [pageSize]="10"
+			[pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+	</mat-card>
+	<br><br>
+</div>
+
+
+<div *ngIf="isModalOpen" class="modal">
+	<div class="modal-content">
+		<h3>{{ isEditing ? 'Editar Tarefa' : 'Criar Tarefa' }}</h3>
+		<form (ngSubmit)="onSubmit()">
+			<label for="title">Título:</label>
+			<input type="text" id="title" [(ngModel)]="currentTask.title" name="title" required />
+
+			<label for="description">Descrição:</label>
+			<textarea id="description" [(ngModel)]="currentTask.description" name="description" required></textarea>
+
+			<label for="status">Status:</label>
+			<select id="status" [(ngModel)]="currentTask.status" name="status" required>
+				<option value="Pendente">Pendente</option>
+				<option value="Em Progresso">Em Progresso</option>
+				<option value="Concluída">Concluída</option>
+			</select>
+
+			  <button type="submit" class="btn btn-outline-success button-spacing button-spacing1">
+				<i class="fas fa-check"></i> {{ isEditing ? 'Atualizar' : 'Criar' }}
+			  </button>
+			<button type="button" class="btn btn-outline-danger button-spacing button-spacing1" (click)="closeModal()">
+				<i class="fas fa-times"></i> Cancel
+			  </button>
+		</form>
+	</div>
+</div> -->

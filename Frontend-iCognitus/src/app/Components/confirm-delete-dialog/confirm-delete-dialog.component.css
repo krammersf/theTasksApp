@@ -1,0 +1,27 @@
+/* Confirm Delete Dialog Custom Styles */
+mat-dialog-content {
+	font-size: 16px;
+	color: #555;
+  }
+  
+  mat-dialog-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 5px; /* Espaçamento entre os botões */
+  }
+  
+  .cancel-button, .delete-button {
+	border-radius: 5px; /* Cantos arredondados */
+  }
+  
+  .cancel-button {
+	color: #5e5e5e; /* Cor secundária */
+  }
+  
+  .delete-button {
+	color: #f44336; /* Cor de perigo (danger) */
+  }
+  
+  .delete-title {
+	color: #f44336; /* Cor vermelha para o título */
+  }

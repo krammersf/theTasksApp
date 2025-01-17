@@ -53,3 +53,13 @@
 	margin-right: 27px;
 	padding: 12px;
 }
+
+mat-dialog-actions {
+	display: flex;
+	justify-content: space-between;
+  }
+
+
+
+
+
