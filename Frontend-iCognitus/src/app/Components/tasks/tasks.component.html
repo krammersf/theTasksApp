@@ -11,9 +11,7 @@
 				</mat-form-field>
 			</div>
 			<div class="filter-container">
-				<!-- Label acima do filtro -->
 				<div class="filter-item">
-					<!-- <label for="statusFilter" class="filter-label">Filtrar por Status:</label> -->
 					<mat-form-field appearance="outline" class="status-filter">
 						<mat-label>Find by State</mat-label>
 						<mat-select id="statusFilter" [(ngModel)]="selectedStatus" (ngModelChange)="onStatusChange()">
@@ -89,7 +87,7 @@
 
 			<div *ngIf="successMessage" class="alert alert-success">
 				{{ successMessage }}
-			  </div>
+			</div>
 		</mat-card-content>
 
 		<!-- Paginação -->
@@ -103,12 +101,20 @@
 <div *ngIf="isModalOpen" class="modal">
 	<div class="modal-content">
 		<h3>{{ isEditing ? 'Editar Tarefa' : 'Criar Tarefa' }}</h3>
-		<form (ngSubmit)="onSubmit()">
+		<form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
 			<label for="title">Título:</label>
-			<input type="text" id="title" [(ngModel)]="currentTask.title" name="title" required />
+			<input type="text" id="title" [(ngModel)]="currentTask.title" name="title" #title="ngModel" required
+				minlength="1" />
+			<div *ngIf="title.invalid && (title.dirty || title.touched)" class="error-message">
+				<div *ngIf="title.errors?.['required']">Título é obrigatório</div>
+			</div>
 
 			<label for="description">Descrição:</label>
-			<textarea id="description" [(ngModel)]="currentTask.description" name="description" required></textarea>
+			<textarea id="description" [(ngModel)]="currentTask.description" name="description" #description="ngModel"
+				required minlength="1"></textarea>
+			<div *ngIf="description.invalid && (description.dirty || description.touched)" class="error-message">
+				<div *ngIf="description.errors?.['required']">Descrição é obrigatória</div>
+			</div>
 
 			<label for="status">Status:</label>
 			<select id="status" [(ngModel)]="currentTask.status" name="status" required>
@@ -117,7 +123,8 @@
 				<option value="Concluída">Concluída</option>
 			</select>
 
-			<button type="submit" class="btn btn-outline-success button-spacing button-spacing1">
+			<button type="submit" class="btn btn-outline-success button-spacing button-spacing1"
+				[disabled]="!taskForm.valid">
 				<i class="fas fa-check"></i> {{ isEditing ? 'Atualizar' : 'Criar' }}
 			</button>
 			<button type="button" class="btn btn-outline-danger button-spacing button-spacing1" (click)="closeModal()">

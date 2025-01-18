@@ -1,4 +1,4 @@
-/* src/app/components/task-list/task-list.component.css */
+
 .task-list {
 	margin: 20px;
   }
@@ -38,24 +38,24 @@
   
   .modal-content {
 	background-color: white;
-	padding: 20px;
-	border-radius: 5px;
-	width: 600px;
+	padding: 10px;
+	border-radius: 10px;
+	width: 500px;
   }
   
-  input, textarea{
+  /* input, textarea{
 	width: 92%;
 	margin: 10px;
 	margin-right: 10px;
 	padding: 10px;
-  }
+  } */
 
-  select {
+  /* select {
 	width: 96%;
 	margin: 10px;
 	margin-right: 27px;
 	padding: 12px;
-}
+} */
 
 mat-dialog-actions {
 	display: flex;
@@ -73,7 +73,7 @@ mat-dialog-actions {
 }
 
 .filter-label {
-    margin-bottom: 8px; /* Espaço entre o label e o mat-form-field */
+    margin-bottom: 8px; 
     font-weight: bold;
 }
 
@@ -81,7 +81,7 @@ mat-dialog-actions {
 .filter-row {
 	.mat-mdc-form-field {
 	  width: 400px;
-	  margin-right: 15px; /* Adiciona espaço à direita da primeira caixa */
+	  margin-right: 15px;
 	  
 	  .mat-mdc-text-field-wrapper {
 		padding: 0;
@@ -96,6 +96,7 @@ mat-dialog-actions {
 	  .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
 		padding-top: 8px;
 		padding-bottom: 8px;
+		padding-left: 10px; 
 		min-height: unset;
 	  }
 	}
@@ -106,39 +107,57 @@ mat-dialog-actions {
 	display: flex;
 	align-items: center;
 	width: 100%;
-	position: relative; /* adicionado */
+	position: relative; 
   }
   
   .btn-outline-primary {
 	position: absolute;
 	right: 13px;
-	top: 35%;
+	top: 43%;
 	transform: translateY(-50%);
-	height: 55px;  /* altura adicionada */
+	height: 55px; 
   }
 
 
 
 
-  .mat-card .mat-table .mat-cell {
-    border: none !important;
+
+input, textarea, select {
+  width: 100%; 
+  margin: 5px 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-/* Remove todas as bordas verticais e horizontais */
-.mat-table, .mat-header-row, .mat-row, .mat-cell, .mat-header-cell {
-    border: none !important;
+.modal-content form {
+  padding: 0 20px; /* Adiciona padding ao form para espaçamento interno uniforme */
 }
 
-/* Remove possíveis espaçamentos entre células */
-.mat-table {
-    border-spacing: 0 !important;
-    border-collapse: collapse !important;
+/* Estilo para os labels */
+.modal-content label {
+  display: block;
+  display: center; /* Faz o label ocupar toda a linha */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-/* Remove bordas internas das células */
-.mat-cell, .mat-header-cell {
-    border-right: none !important;
-    border-left: none !important;
-    border-bottom: none !important;
-    border-top: none !important;
+textarea {
+  min-height: 100px;
+  resize: vertical; 
 }
+
+.modal-content h3 {
+	text-align: center;
+  }
+  
+  select {
+	margin-bottom: 30px !important;
+  }
+
+
+  .error-message {
+	color: red;
+	font-size: 12px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+  }

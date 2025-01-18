@@ -27,6 +27,8 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { MessageService } from '../../Services/message.service';
 
+import { NgForm } from '@angular/forms';
+
 
 
 
@@ -181,22 +183,41 @@ export class TaskListComponent implements OnInit {
     this.isModalOpen = false;
   }
 
+
+  // onSubmit(form: NgForm): void {
+  //   if (form.valid) {
+  //     if (!this.currentTask.title || !this.currentTask.description) {
+  //       this.messageService.showSnackbar('Preencha todos os campos obrigatórios', 'error');
+  //       return;
+  //     }
+  //     // resto do seu código aqui
+  //   }
+  // }
   // Submeter o formulário para criar ou editar a tarefa
-  onSubmit(): void {
-    if (this.isEditing) {
-      this.taskService.updateTask(this.currentTask.id, this.currentTask).subscribe(() => {
-        this.messageService.showSnackbar('The task was updateded with success!', 'success');
-        this.loadTasks();
-        this.clearSuccessMessageAfterDelay();
-        this.closeModal();
-      });
+  onSubmit(form: NgForm): void {
+    if (form.valid) {
+      if (!this.currentTask.title || !this.currentTask.description) {
+        this.messageService.showSnackbar('Preencha todos os campos obrigatórios', 'error');
+        return;
+      }
+  
+      if (this.isEditing) {
+        this.taskService.updateTask(this.currentTask.id, this.currentTask).subscribe(() => {
+          this.messageService.showSnackbar('The task was updateded with success!', 'success');
+          this.loadTasks();
+          this.clearSuccessMessageAfterDelay();
+          this.closeModal();
+        });
+      } else {
+        this.taskService.createTask(this.currentTask).subscribe(() => {
+          this.messageService.showSnackbar('The task was created with success!', 'success');
+          this.loadTasks();
+          this.clearSuccessMessageAfterDelay();
+          this.closeModal();
+        });
+      }
     } else {
-      this.taskService.createTask(this.currentTask).subscribe(() => {
-        this.messageService.showSnackbar('The task was created with success!', 'success');
-        this.loadTasks();
-        this.clearSuccessMessageAfterDelay();
-        this.closeModal();
-      });
+      this.messageService.showSnackbar('Por favor, preencha todos os campos corretamente', 'error');
     }
   }
 
