@@ -17,13 +17,13 @@ namespace iCognitus_test.Controllers
 	{
 		private readonly DataContext _context;
 		private readonly IConfiguration _configuration;
-        private readonly ILogger<AuthController> _logger;
+		private readonly ILogger<AuthController> _logger;
 
 		public AuthController(DataContext context, IConfiguration configuration, ILogger<AuthController> logger)
 		{
 			_context = context;
 			_configuration = configuration;
-            _logger = logger;
+			_logger = logger;
 		}
 
 		// POST: api/auth/register
@@ -32,12 +32,21 @@ namespace iCognitus_test.Controllers
 		{
 			_logger.LogInformation("Iniciando o processo de registro do usuário: {Email}", userDto.Email);
 
+			// Verificação manual dos campos obrigatórios
+			if (string.IsNullOrWhiteSpace(userDto.Email) ||
+				string.IsNullOrWhiteSpace(userDto.Password) ||
+				string.IsNullOrWhiteSpace(userDto.Username))
+			{
+				_logger.LogWarning("Tentativa de registro com campos ausentes.");
+				return BadRequest("All fields must be filled: Email, Username, and Password.");
+			}
+
 			if (!ModelState.IsValid)
 			{
 				_logger.LogWarning("ModelState inválido ao tentar registrar o usuário: {Email}", userDto.Email);
 				return BadRequest(ModelState);
 			}
-			
+
 			if (_context.Users == null)
 			{
 				_logger.LogError("Tabela de Users não está disponível.");
@@ -48,14 +57,14 @@ namespace iCognitus_test.Controllers
 			if (existingUser != null)
 			{
 				_logger.LogWarning("Email já existe: {Email}", userDto.Email);
-				return BadRequest("Email already exists");
+				return BadRequest("Email already exists.");
 			}
 
 			var user = new User
 			{
 				Email = userDto.Email,
 				Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password),
-				Username = userDto.Username 
+				Username = userDto.Username
 			};
 
 			_context.Users.Add(user);

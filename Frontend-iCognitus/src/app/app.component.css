@@ -1,9 +1,63 @@
 .centered-content {
-	margin-top: 10px;
+	margin-top: 64px; /* Ajuste a margem para o conteúdo não ficar sobre a navbar */
 	width: 100%;
+	position: relative; /* Garante que o conteúdo esteja acima do vídeo */
+	z-index: 1; /* Garante que o conteúdo esteja em cima do vídeo */
   }
   
-  .centered-title {
+  .navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 16px;
+	color: white;
+	background-color: black;
+	position: fixed; /* Fixa a navbar no topo */
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000; /* Garante que a navbar fique acima do conteúdo */
+	padding: 10px 0; /* Ajuste o padding da navbar conforme necessário */
+  }
+  
+  .navbar-title {
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
 	text-align: center;
   }
-
+  
+  .spacer {
+	flex: 1;
+  }
+  
+  .logout-button {
+	background-color: black; /* Fundo preto */
+	color: white; /* Letra branca */
+	border: none; /* Remover borda */
+	padding: 8px 16px; /* Ajustar o padding conforme necessário */
+	font-weight: bold; /* Deixar a letra em negrito (opcional) */
+	border-radius: 4px; /* Bordas arredondadas (opcional) */
+  }
+  
+  .logout-button:hover {
+	background-color: #333; /* Fundo um pouco mais claro ao passar o mouse */
+  }
+  
+  .background-video {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Faz o vídeo preencher toda a tela sem distorção */
+	z-index: -1; /* Coloca o vídeo atrás do conteúdo */
+  }
+  
+  .video-icon {
+	margin-right: 15px; /* Ajuste a margem à direita para dar mais espaço */
+	margin-left: 24px;  /* Adiciona uma margem à esquerda para afastar do lado esquerdo */
+	width: 24px; /* Ajuste o tamanho conforme necessário */
+	height: 24px; /* Ajuste o tamanho conforme necessário */
+	object-fit: cover; /* Garante que o vídeo seja redimensionado corretamente */
+  }
