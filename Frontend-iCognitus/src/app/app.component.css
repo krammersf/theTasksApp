@@ -60,4 +60,6 @@
 	width: 24px; /* Ajuste o tamanho conforme necessário */
 	height: 24px; /* Ajuste o tamanho conforme necessário */
 	object-fit: cover; /* Garante que o vídeo seja redimensionado corretamente */
+	position: relative;
+	top: -10px;
   }
