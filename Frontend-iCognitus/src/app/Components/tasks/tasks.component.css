@@ -161,3 +161,33 @@ textarea {
 	margin-top: 5px;
 	margin-bottom: 10px;
   }
+
+
+
+
+  .footer-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #f8f9fa;
+  }
+
+  .video-topo {
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	margin: 10px;
+  }
+  
+  .video-icon {
+	width: 40px;
+	height: 40px;
+	margin-left: 20px;
+	margin-top: 20px;
+  }
+
+  mat-paginator {
+	flex-grow: 1;
+
+  }
+  

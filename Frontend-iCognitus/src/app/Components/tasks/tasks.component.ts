@@ -246,6 +246,10 @@ export class TaskListComponent implements OnInit {
     }, 2000);
   }
 
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   // Deletar uma tarefa
   // deleteTask(id: number): void {
   //   this.taskService.deleteTask(id).subscribe(() => {
