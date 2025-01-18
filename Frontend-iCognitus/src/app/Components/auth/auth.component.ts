@@ -111,7 +111,6 @@ export class AuthComponent {
         console.log('User logged in:', response);
         localStorage.setItem('authToken', response.token); // Armazenar o token aqui
   
-        // Decodificar o token JWT para obter o 'username' e o 'email'
         const decodedToken: any = jwt_decode(response.token);
         const username = decodedToken.username; // Extrair 'username' do token
         const email = decodedToken.sub;
@@ -156,6 +155,8 @@ export class AuthComponent {
 
   logout(): void {
     this.authService.logout();
+    localStorage.removeItem('token');  // Se você armazenou o token assim
+    sessionStorage.removeItem('token');
     this.router.navigate(['/auth']);
   }
 }

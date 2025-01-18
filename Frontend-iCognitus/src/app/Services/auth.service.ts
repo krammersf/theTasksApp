@@ -22,10 +22,8 @@ export class AuthService {
       console.log('Token armazenado:', token);
 
       try {
-        const decodedToken: any = jwtDecode(token); // Decodifica o token
-        console.log('Token decodificado:', decodedToken); // Exibe o conteúdo do token (Payload)
-
-        // Agora, vamos imprimir email e username
+        const decodedToken: any = jwtDecode(token); 
+        console.log('Token decodificado:', decodedToken); 
         console.log('Email do token:', decodedToken.sub); // "sub" é o campo do email
         console.log('Username do token:', decodedToken.username); // "username" é o campo do nome de usuário
 
@@ -45,7 +43,9 @@ export class AuthService {
       tap((response: any) => {
         if (response.token) {
           localStorage.setItem('authToken', response.token);
+          sessionStorage.setItem('authToken', response.token);
           console.log('Token armazenado no localStorage:', response.token);
+          console.log('Token armazenado no sessionStorage:', response.token);
         }
       })
     );
@@ -53,6 +53,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
     console.log('User logged out');
   }
 

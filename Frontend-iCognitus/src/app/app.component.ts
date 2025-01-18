@@ -26,8 +26,10 @@ export class AppComponent {
   }
 
   logout(): void {
-    console.log('Logout executado');
-    // Adicione aqui a lógica de logout
-    this.router.navigate(['/']);  // Redireciona para a página inicial após logout
+    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken'); 
+  
+    console.log('Usuário desconectado');
+    this.router.navigate(['/']);
   }
 }

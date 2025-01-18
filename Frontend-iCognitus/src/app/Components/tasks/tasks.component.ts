@@ -1,7 +1,7 @@
 // src/app/components/task-list/task-list.component.ts
 import { Component, OnInit, ViewChild, ViewEncapsulation  } from '@angular/core';
 import { TaskService } from '../../Services/tasks.service';
-import { TaskItem } from '../../Interfaces/tasks';
+import { TaskItem } from '../../Interfaces/Tasks';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+
 
 import { MessageService } from '../../Services/message.service';
 
@@ -63,19 +64,33 @@ export class TaskListComponent implements OnInit {
   isModalOpen = false;
   isEditing = false;
   successMessage: string | null = null;
-  dataSource!: MatTableDataSource<TaskItem>;  
+  private tokenKey = 'authToken'; 
+  dataSource!: MatTableDataSource<TaskItem>; 
+
   displayedColumns: string[] = ['title', 'description', 'status', 'createdBy', 'updatedBy', 'actions'];
   currentTask: TaskItem = { id: 0, title: '', description: '', status: 'Pendente', createdBy: '', updatedBy: '' };
   selectedStatus: string = 'Todos'; // Status selecionado na dropbox
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private taskService: TaskService, private dialog: MatDialog,  private messageService: MessageService ) {}
+  constructor(private taskService: TaskService, private dialog: MatDialog,  private messageService: MessageService, private router: Router ) {}
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource();  // Inicializa dataSource vazio
-    this.loadTasks();  // Carrega as tarefas inicialmente
+    const tokenLocalStorage = localStorage.getItem(this.tokenKey);
+    const tokenSessionStorage = sessionStorage.getItem(this.tokenKey);
+    console.log('Token no localStorage:', tokenLocalStorage);
+    console.log('Token no sessionStorage:', tokenSessionStorage);
+
+    const token = tokenLocalStorage || tokenSessionStorage;
+    console.log('==>>>Token:', token);
+
+    if (!token) {
+      this.router.navigate(['/auth']);
+    }
+    this.dataSource = new MatTableDataSource(); 
+    this.loadTasks();
   }
+
 
   // Carregar tarefas com base no status selecionado
   loadTasks(): void {

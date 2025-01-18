@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TaskItem } from '../Interfaces/tasks';
+import { TaskItem } from '../Interfaces/Tasks';
 
 @Injectable({
   providedIn: 'root',  // O serviço está sendo fornecido globalmente
