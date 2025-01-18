@@ -24,6 +24,8 @@ import { Router } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MessageService } from '../../Services/message.service';
+
 
 
 
@@ -60,6 +62,7 @@ export class TaskListComponent implements OnInit {
   filteredTasks: TaskItem[] = [];
   isModalOpen = false;
   isEditing = false;
+  successMessage: string | null = null;
   dataSource!: MatTableDataSource<TaskItem>;  
   displayedColumns: string[] = ['title', 'description', 'status', 'createdBy', 'updatedBy', 'actions'];
   currentTask: TaskItem = { id: 0, title: '', description: '', status: 'Pendente', createdBy: '', updatedBy: '' };
@@ -67,7 +70,7 @@ export class TaskListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private taskService: TaskService, private dialog: MatDialog ) {}
+  constructor(private taskService: TaskService, private dialog: MatDialog,  private messageService: MessageService ) {}
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();  // Inicializa dataSource vazio
@@ -167,12 +170,16 @@ export class TaskListComponent implements OnInit {
   onSubmit(): void {
     if (this.isEditing) {
       this.taskService.updateTask(this.currentTask.id, this.currentTask).subscribe(() => {
+        this.messageService.showSnackbar('The task was updateded with success!', 'success');
         this.loadTasks();
+        this.clearSuccessMessageAfterDelay();
         this.closeModal();
       });
     } else {
       this.taskService.createTask(this.currentTask).subscribe(() => {
+        this.messageService.showSnackbar('The task was created with success!', 'success');
         this.loadTasks();
+        this.clearSuccessMessageAfterDelay();
         this.closeModal();
       });
     }
@@ -182,15 +189,25 @@ export class TaskListComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       width: '400px',
       data: { message: 'Tem certeza que deseja excluir esta tarefa?' }
+      
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.taskService.deleteTask(id).subscribe(() => {
-          this.loadTasks(); // Recarrega as tarefas após a exclusão
+          this.loadTasks(); 
+          this.messageService.showSnackbar('The task was deleted with success!', 'success');
         });
       }
     });
+    
+  }
+
+  clearSuccessMessageAfterDelay(): void {
+    setTimeout(() => {
+      this.successMessage = null;
+
+    }, 2000);
   }
 
   // Deletar uma tarefa

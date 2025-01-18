@@ -27,3 +27,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 	top: 50% !important;  /* Centraliza o ícone */
 	transform: translateY(-50%) !important;  /* Ajusta o ícone verticalmente */
   }
+
+
+
+
+
+  .snackbar-success {
+	background-color: #4CAF50 !important;
+	color: white !important;
+  }
+  
+  .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+	background-color: #053907 !important;
+	color: white !important;
+  }
+  
+
+  .snackbar-success .mat-simple-snackbar-action {
+	color: white !important;
+  }
