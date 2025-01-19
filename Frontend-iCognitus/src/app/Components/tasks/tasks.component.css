@@ -167,3 +167,12 @@ select {
 mat-paginator {
 	flex-grow: 1;
 }
+
+table td {
+	padding: 10px;
+	text-align: left; /* Alinha todo o conteúdo da célula à esquerda */
+  }
+  
+  table td:last-child {
+	text-align: right; /* Alinha os botões à direita da última célula */
+  }

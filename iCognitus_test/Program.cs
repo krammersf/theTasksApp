@@ -58,7 +58,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Middleware
-app.UseCors("AllowAll"); 
 app.UseAuthentication();  
 app.UseAuthorization();  
 

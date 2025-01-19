@@ -7,4 +7,5 @@ export const routes: Routes = [
 	{ path: '', redirectTo: 'auth', pathMatch: 'full' },
 	{ path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard] },
 	{ path: 'auth', component: AuthComponent },
+	{ path: '**', redirectTo: 'auth' }
 ];
