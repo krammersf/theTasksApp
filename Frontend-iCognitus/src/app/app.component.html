@@ -1,15 +1,12 @@
 <mat-toolbar color="primary" class="navbar">
-  <!-- Vídeo no topo da barra de navegação (caso queira no fundo da navbar) -->
-  <video src="assets/open-book.mp4" class="video-icon" autoplay loop muted></video>
-  <span class="navbar-title">{{ title }}</span>
-  <span class="spacer"></span>
-  
-  <!-- O botão será mostrado apenas se a URL não for '/auth' -->
-  <button mat-button class="logout-button" (click)="logout()" *ngIf="currentUrl !== '/auth'">
-    Logout
-  </button>
+	<video src="assets/open-book.mp4" class="video-icon" autoplay loop muted></video>
+	<span class="navbar-title">{{ title }}</span>
+	<span class="spacer"></span>
+	<button mat-button class="logout-button" (click)="logout()" *ngIf="currentUrl !== '/auth'">
+		Logout
+	</button>
 </mat-toolbar>
 
 <div class="centered-content">
-  <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </div>

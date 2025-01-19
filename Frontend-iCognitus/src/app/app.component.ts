@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, MatDialogModule, MatToolbarModule, MatIconModule],  // Adicionando o HttpClientModule aqui
+  imports: [RouterOutlet, CommonModule, MatDialogModule, MatToolbarModule, MatIconModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -19,9 +19,9 @@ export class AppComponent {
   currentUrl: string = '';
 
   constructor(private router: Router) {
-    // Observar mudanças na URL para decidir quando mostrar o botão
+
     this.router.events.subscribe(() => {
-      this.currentUrl = this.router.url;  // Atualiza a URL atual
+      this.currentUrl = this.router.url;
     });
   }
 

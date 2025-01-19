@@ -1,4 +1,3 @@
-// src/app/models/task-item.ts
 export interface TaskItem {
 	id: number;
 	title: string;
@@ -6,4 +5,4 @@ export interface TaskItem {
 	status: string;
 	createdBy: string;
 	updatedBy: string;
-  }
+}

@@ -1,23 +1,19 @@
 
-  .button-spacing {
-	margin: 5px; /* Espaçamento entre os botões */
-  }
+.button-spacing {
+	margin: 5px;
+}
   
-  .input-small {
+.input-small {
 	margin-top: 20px;
 	width: 100%;
-	margin-bottom: 50px; /* Espaço de 20px entre os campos de entrada */
-  }
-  
-  .error-message {
-	white-space: pre-line; /* Preserva as quebras de linha na string */
-  }
+	margin-bottom: 50px;
+}
 
+.error-message {
+	white-space: pre-line;
+}
 
-
-
-
-  .centered-container {
+.centered-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,19 +21,19 @@
 	margin-top: 50px;
 	width: 100%;
 	text-align: center;
-	max-width: none; /* Adicione esta linha */
-  }
+	max-width: none;
+}
   
-  form {
+form {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	min-width: 355px; /* Tente usar min-width em vez de max-width */
+	min-width: 355px;
 	margin: 0 auto;
-  }
-  
-  mat-form-field {
+}
+
+mat-form-field {
 	width: 100%;
-	min-width: 325px; /* Force a largura mínima também nos campos */
+	min-width: 325px;
 	margin-bottom: 15px;
-  }
+}
