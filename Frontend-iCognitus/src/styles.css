@@ -1,48 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
-/* Estilo global para o mat-form-field */
 .mat-form-field {
-	height: 35px !important;  /* Ajusta a altura geral */
-	padding: 0 !important;  /* Remove o padding extra */
-  }
-  
-  .mat-form-field .mat-input-element {
-	height: 30px !important;  /* Ajusta a altura do input */
-	font-size: 14px !important;  /* Ajusta o tamanho da fonte */
-	padding: 0 12px !important;  /* Ajuste o padding lateral */
-  }
-  
-  .mat-form-field .mat-label {
-	font-size: 14px !important;  /* Tamanho menor do label */
-	line-height: 35px !important;  /* Alinha o texto */
-	padding-top: 0 !important;  /* Remove o padding extra do topo */
-  }
-  
-  .mat-form-field .mat-icon {
-	font-size: 18px !important;  /* Tamanho do ícone */
-	top: 50% !important;  /* Centraliza o ícone */
-	transform: translateY(-50%) !important;  /* Ajusta o ícone verticalmente */
-  }
+	height: 35px !important;
+	padding: 0 !important;
+}
 
+.mat-form-field .mat-input-element {
+	height: 30px !important;
+	font-size: 14px !important;
+	padding: 0 12px !important;
+}
 
+.mat-form-field .mat-label {
+	font-size: 14px !important;
+	line-height: 35px !important;
+	padding-top: 0 !important;
+}
 
+.mat-form-field .mat-icon {
+	font-size: 18px !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+}
 
-
-  .snackbar-success {
+.snackbar-success {
 	background-color: #4CAF50 !important;
 	color: white !important;
-  }
-  
-  .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
 	background-color: #053907 !important;
 	color: white !important;
-  }
-  
+}
 
-  .snackbar-success .mat-simple-snackbar-action {
+.snackbar-success .mat-simple-snackbar-action {
 	color: white !important;
-  }
+}
