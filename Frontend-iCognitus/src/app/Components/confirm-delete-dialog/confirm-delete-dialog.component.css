@@ -1,0 +1,26 @@
+mat-dialog-content {
+	font-size: 16px;
+	color: #555;
+}
+	
+mat-dialog-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 5px;
+}
+	
+.cancel-button, .delete-button {
+	border-radius: 5px;
+}
+	
+.cancel-button {
+	color: #5e5e5e;
+}
+	
+.delete-button {
+	color: #f44336;
+}
+	
+.delete-title {
+	color: #f44336;
+}
