@@ -212,7 +212,6 @@ export class TaskListComponent implements OnInit {
 	clearSuccessMessageAfterDelay(): void {
 		setTimeout(() => {
 			this.successMessage = null;
-
 		}, 2000);
 	}
 

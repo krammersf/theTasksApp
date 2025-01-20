@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 	providedIn: 'root'
 })
 export class AuthService {
-	private apiUrl = 'http://localhost:5288/api/auth'; // URL do backend
+	private apiUrl = 'http://localhost:5288/api/auth';
 
 	constructor(private http: HttpClient) { }
 
