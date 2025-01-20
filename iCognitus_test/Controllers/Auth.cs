@@ -32,7 +32,6 @@ namespace iCognitus_test.Controllers
 		{
 			_logger.LogInformation("Iniciando o processo de registro do usuário: {Email}", userDto.Email);
 
-			// Verificação manual dos campos obrigatórios
 			if (string.IsNullOrWhiteSpace(userDto.Email) ||
 				string.IsNullOrWhiteSpace(userDto.Password) ||
 				string.IsNullOrWhiteSpace(userDto.Username))

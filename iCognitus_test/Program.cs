@@ -16,14 +16,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Adiciona o CORS
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()   // Permite qualquer origem (pode ser restrito mais tarde)
-              .AllowAnyMethod()   // Permite qualquer método HTTP
-              .AllowAnyHeader();  // Permite qualquer cabeçalho
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
 
@@ -50,7 +50,7 @@ var app = builder.Build();
 
 app.UseCors("AllowAll");
 
-// DB created
+// DB
 using (var scope = app.Services.CreateScope())
 {
 	var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
@@ -61,7 +61,7 @@ using (var scope = app.Services.CreateScope())
 app.UseAuthentication();  
 app.UseAuthorization();  
 
-// Swagger config
+// Swagger
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
@@ -71,4 +71,3 @@ if (app.Environment.IsDevelopment())
 // Map controllers
 app.MapControllers();
 app.Run();
-

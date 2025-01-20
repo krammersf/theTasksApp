@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("iCognitus_test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84cc2591ac3422a9c75bd972defc08a7cc668242")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+504191e03c9715f6e257f205d61f527b5e3de783")]
 [assembly: System.Reflection.AssemblyProductAttribute("iCognitus_test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("iCognitus_test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
