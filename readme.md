@@ -1,77 +1,77 @@
 # The Tasks App Project
 
-Este projeto consiste num backend desenvolvido em dotNET (c#) e um frontend desenvolvido em Angular.
+This project consists of a backend developed in dotNET (C#) and a frontend developed in Angular.
 
-## Estrutura do Projeto
+## Project Structure
 
-O backend foi desenvolvido utilizando dotNET (c#).
-O frontend foi desenvolvido utilizando Angular.
- 
+The backend was developed using dotNET (C#).
+The frontend was developed using Angular.
+
 ## Backend
 
-Para configurar e rodar o backend, siga os passos abaixo:
+To set up and run the backend, follow the steps below:
 
-1. Clone este projecto e de o nome theTasksApp
+1. Clone this project and name it `theTasksApp`.
 
-2. Entre no project:
+2. Navigate to the project:
     ```sh
     cd theTasksApp
     ```
 
-3. Entre no backend :
+3. Navigate to the backend:
     ```sh
     cd Backend-theTasksApp
     ```
 
-2. Adicione os pacotes necessários:
+4. Add the required packages:
     ```sh
     dotnet restore
     ```
 
-3. Crie e atualize o banco de dados:
+5. Create and update the database:
     ```sh
     dotnet ef database update
     ```
 
-4. Compile e rode o projeto:
+6. Build and run the project:
     ```sh
     dotnet build
     dotnet run
     ```
 
-5. Acesse a documentação da API:
+7. Access the API documentation:
     ```
     http://localhost:5288/swagger/index.html
     ```
 
 ## Frontend
 
-Para configurar e rodar o frontend, siga os passos abaixo:
+To set up and run the frontend, follow the steps below:
 
-1. Entre no Frontend
+1. Navigate to the frontend:
     ```sh
     cd Frontend-theTasksApp
     ```
 
-1. Instale as dependências:
+2. Install the dependencies:
     ```sh
     npm install
     ```
 
-2. Rode o servidor:
+3. Run the server:
     ```sh
     ng serve
     ```
 
-3. Acesse a aplicação:
+4. Access the application:
     ```
     http://localhost:4200
     ```
 
-## Demonstração
+## Demo
 
-Um vídeo demonstrativo do funcionamento do projeto está disponível aqui.
+A demonstration video of the project functionality is available [here](URL_of_video).
 
-## Contribuição
+## Contribution
 
 krammersf
