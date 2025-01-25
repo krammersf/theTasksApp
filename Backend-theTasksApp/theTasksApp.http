@@ -1,0 +1,6 @@
+@theTasksApp_HostAddress = http://localhost:5288
+
+GET {{theTasksApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

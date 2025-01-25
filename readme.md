@@ -1,17 +1,26 @@
 # The Tasks App Project
 
-Este projeto consiste num backend desenvolvido em .NET (c#) e um frontend desenvolvido em Angular.
+Este projeto consiste num backend desenvolvido em dotNET (c#) e um frontend desenvolvido em Angular.
 
 ## Estrutura do Projeto
+
+O backend foi desenvolvido utilizando dotNET (c#).
+O frontend foi desenvolvido utilizando Angular.
  
 ## Backend
 
-O backend foi desenvolvido utilizando .NET.
 Para configurar e rodar o backend, siga os passos abaixo:
 
-1. Crie um novo projeto web API:
+1. Clone este projecto e de o nome theTasksApp
+
+2. Entre no project:
     ```sh
-    cd iCognitus_test
+    cd theTasksApp
+    ```
+
+3. Entre no backend :
+    ```sh
+    cd Backend-theTasksApp
     ```
 
 2. Adicione os pacotes necessários:
@@ -37,15 +46,19 @@ Para configurar e rodar o backend, siga os passos abaixo:
 
 ## Frontend
 
-O frontend foi desenvolvido utilizando Angular. Para configurar e rodar o frontend, siga os passos abaixo:
+Para configurar e rodar o frontend, siga os passos abaixo:
+
+1. Entre no Frontend
+    ```sh
+    cd Frontend-theTasksApp
+    ```
 
 1. Instale as dependências:
     ```sh
-    cd Frontend-iCognitus
     npm install
     ```
 
-2. Rode o servidor de desenvolvimento:
+2. Rode o servidor:
     ```sh
     ng serve
     ```
@@ -55,11 +68,9 @@ O frontend foi desenvolvido utilizando Angular. Para configurar e rodar o fronte
     http://localhost:4200
     ```
 
-
 ## Demonstração
 
 Um vídeo demonstrativo do funcionamento do projeto está disponível aqui.
-
 
 ## Contribuição
 

@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="navbar">
+	<video src="assets/open-book.mp4" class="video-icon1" autoplay loop muted></video>
+	<span class="navbar-title">{{ title }}</span>
+	<span class="spacer"></span>
+	<button mat-button class="logout-button" (click)="logout()" *ngIf="currentUrl !== '/auth'">
+		Logout
+	</button>
+</mat-toolbar>
+
+<div class="centered-content">
+	<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,39 @@
+
+.button-spacing {
+	margin: 5px;
+}
+
+.input-small {
+	margin-top: 20px;
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.error-message {
+	white-space: pre-line;
+}
+
+.centered-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+	max-width: none;
+}
+  
+form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-width: 355px;
+	margin: 0 auto;
+}
+
+mat-form-field {
+	width: 100%;
+	min-width: 325px;
+	margin-bottom: 15px;
+}
