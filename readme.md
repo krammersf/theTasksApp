@@ -7,6 +7,12 @@ This project consists of a backend developed in dotNET (C#) and a frontend devel
 The backend was developed using dotNET (C#).
 The frontend was developed using Angular.
 
+## Demo
+
+A demonstration video of the project functionality is available below:
+
+Click [here](https://www.youtube.com/watch?v=m1ojcssGwEo) to watch the video directly.
+
 ## Backend
 
 To set up and run the backend, follow the steps below:
@@ -67,12 +73,6 @@ To set up and run the frontend, follow the steps below:
     ```
     http://localhost:4200
     ```
-
-## Demo
-
-A demonstration video of the project functionality is available below:
-
-Click [here](https://www.youtube.com/watch?v=m1ojcssGwEo) to watch the video directly.
 
 ## Contribution
 
