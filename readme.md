@@ -70,7 +70,7 @@ To set up and run the frontend, follow the steps below:
 
 ## Demo
 
-A demonstration video of the project functionality is available [here](URL_of_video).
+A demonstration video of the project functionality is available [here](./video1.mp4).
 
 ## Contribution
 
