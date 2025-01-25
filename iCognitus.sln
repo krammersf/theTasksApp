@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iCognitus_test", "iCognitus_test\iCognitus_test.csproj", "{050ABE74-1564-45C1-A40D-2297B60CF2F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theTasksApp", "theTasksApp\theTasksApp.csproj", "{050ABE74-1564-45C1-A40D-2297B60CF2F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
