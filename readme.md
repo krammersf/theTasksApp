@@ -70,9 +70,6 @@ To set up and run the frontend, follow the steps below:
 
 ## Demo
 
-## Demo
-
-
 A demonstration video of the project functionality is available below:
 
 Click [here](https://www.youtube.com/watch?v=m1ojcssGwEo) to watch the video directly.
