@@ -74,7 +74,7 @@ To set up and run the frontend, follow the steps below:
 
 A demonstration video of the project functionality is available below:
 
-[![Click to view demo](https://img.icons8.com/ios/452/play-button.png)](./video2.mp4)
+[![Click to view demo](https://img.icons8.com/ios/452/play-button.png)](./video3.mp4)
 
 ## Contribution
 
