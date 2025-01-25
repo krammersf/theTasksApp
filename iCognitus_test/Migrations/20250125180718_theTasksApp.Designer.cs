@@ -10,8 +10,8 @@ using iCognitus_test.Data;
 namespace iCognitus_test.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250115194509_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250125180718_theTasksApp")]
+    partial class theTasksApp
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

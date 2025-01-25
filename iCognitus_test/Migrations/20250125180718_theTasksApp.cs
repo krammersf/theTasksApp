@@ -5,7 +5,7 @@
 namespace iCognitus_test.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class theTasksApp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -7,7 +7,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // SQLite
-var connectionString = "Data Source=Data/iCognitus.db";
+var connectionString = "Data Source=Data/theTasksApp.db";
 builder.Services.AddDbContext<DataContext>(options =>
 	options.UseSqlite(connectionString));
 
