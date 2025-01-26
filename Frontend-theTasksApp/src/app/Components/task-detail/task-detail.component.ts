@@ -18,6 +18,7 @@ export class TaskDetailComponent implements OnInit {
 	constructor(private route: ActivatedRoute, private taskService: TaskService, private router: Router) {}
 
 	ngOnInit(): void {
+		window.scrollTo(0, 0);
 		const taskId = Number(this.route.snapshot.paramMap.get('id'));
 		this.taskService.getTaskById(taskId).subscribe(task => {
 			this.task = task;
