@@ -13,6 +13,32 @@ A demonstration video of the project functionality is available below:
 
 Click [here](https://www.youtube.com/watch?v=m1ojcssGwEo) to watch the video directly.
 
+## Fast run
+
+To quickly set up and run both the backend and frontend, you can use the provided `run.py` script. Follow the steps below:
+
+1. Ensure you have Python 3 installed on your machine.
+
+2. Open a terminal and navigate to the root directory of the project:
+    ```sh
+    cd /path/to/theTasksApp
+    ```
+
+3. Run the [run.py](http://_vscodecontentref_/2) script:
+    ```sh
+    python3 run.py
+    ```
+
+4. The script will automatically set up and start both the backend and frontend servers. You will see the following messages once they are running:
+    ```
+    Backend is running at http://localhost:5288/swagger/index.html
+    Frontend is running at http://localhost:4200
+    ```
+
+5. To stop the backend and frontend processes, press Enter in the terminal where the script is running.
+
+
+
 ## Backend
 
 To set up and run the backend, follow the steps below:
