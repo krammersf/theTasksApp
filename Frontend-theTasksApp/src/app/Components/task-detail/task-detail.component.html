@@ -1,0 +1,10 @@
+<div class="task-container" *ngIf="task">
+	<h2>{{ task.title }}</h2>
+	<p><span>Description:</span> {{ task.description }}</p>
+	<p><span>Status:</span> {{ task.status }}</p>
+	<p><span>Created by:</span> {{ task.createdBy }}</p>
+	<p><span>Updated by:</span> {{ task.updatedBy }}</p>
+
+	<button class="btn btn-secondary" (click)="goBack()">
+		<i class="fas fa-arrow-left"></i> Go Back </button>
+</div>

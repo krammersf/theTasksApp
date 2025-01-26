@@ -93,7 +93,6 @@ export class TaskListComponent implements OnInit {
 		this.loadTasks();
 	}
 
-
 	loadTasks(): void {
 		//console.log('### Status Selecionado:', this.selectedStatus);
 		if (this.selectedStatus === 'Todos') {
@@ -227,5 +226,9 @@ export class TaskListComponent implements OnInit {
 		if (inputElement) {
 			inputElement.value = '';
 		}
+	}
+
+	goToTaskDetail(taskId: number): void {
+		this.router.navigate([`/tasks/${taskId}`]);
 	}
 }

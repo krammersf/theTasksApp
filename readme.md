@@ -15,7 +15,7 @@ Click [here](https://www.youtube.com/watch?v=m1ojcssGwEo) to watch the video dir
 
 ## Fast run
 
-To quickly set up and run both the backend and frontend, you can use the provided `run.py` script. Follow the steps below:
+To quickly set up and run both the backend and frontend, you can use the provided `run.py` script (Mac m2). Follow the steps below:
 
 1. Ensure you have Python 3 installed on your machine.
 

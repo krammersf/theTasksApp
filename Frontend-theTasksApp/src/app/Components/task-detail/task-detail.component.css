@@ -1,0 +1,31 @@
+.task-container {
+	max-width: 600px;
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-family: Arial, sans-serif;
+	background-color: #f9f9f9;
+}
+
+.task-container h2 {
+	color: #007bff;
+	border-bottom: 2px solid #007bff;
+	padding-bottom: 5px;
+}
+
+.task-container p {
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+}
+
+.task-container p span {
+	font-weight: bold;
+}
+
+.loading-card {
+	text-align: center;
+	font-style: italic;
+	color: #757575;
+}
