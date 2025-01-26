@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation  } from '@angular/core';
 import { TaskService } from '../../Services/tasks.service';
-import { TaskItem } from '../../Interfaces/Tasks';
+import { TaskItem } from '../../Interfaces/tasks';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
