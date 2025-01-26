@@ -64,9 +64,9 @@
 					<ng-container matColumnDef="actions">
 						<th mat-header-cell *matHeaderCellDef style="width: 20%;"></th>
 						<td mat-cell *matCellDef="let task" style="width: 20%; text-align: right;">
-							<button class="btn btn-info button-spacing" (click)="goToTaskDetail(task.id)">
-							  <i class="fas fa-info-circle"></i>
-							</button>
+							<button class="btn task-detail-button button-spacing" (click)="goToTaskDetail(task.id)">
+								<i class="fas fa-info-circle"></i>
+							  </button>
 							<button class="btn btn-warning button-spacing" (click)="openEditTaskModal(task)">
 							  <i class="fas fa-edit"></i>
 							</button>

@@ -176,3 +176,15 @@ table td {
 table td:last-child {
 	text-align: right;
 }
+
+.task-detail-button {
+	background-color: #074990;
+	border-color: #074990;
+	color: white;
+}
+
+.task-detail-button:hover {
+	background-color: #02346a;
+	border-color: #02346a;
+	color: white;
+}
