@@ -167,7 +167,7 @@ export class TaskListComponent implements OnInit {
 	onSubmit(form: NgForm): void {
 		if (form.valid) {
 			if (!this.currentTask.title || !this.currentTask.description) {
-				this.messageService.showSnackbar('Preencha todos os campos obrigatórios', 'error');
+				this.messageService.showSnackbar('Please fill in all the required fields', 'error');
 				return;
 			}
 			if (this.isEditing) {
