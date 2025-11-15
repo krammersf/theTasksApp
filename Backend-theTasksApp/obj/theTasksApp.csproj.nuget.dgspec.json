@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/fredericobajouco/Desktop/Fred/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj": {}
+    "/Users/fredericobajouco/Desktop/Fred/Fred_Programs/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj": {}
   },
   "projects": {
-    "/Users/fredericobajouco/Desktop/Fred/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj": {
+    "/Users/fredericobajouco/Desktop/Fred/Fred_Programs/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/fredericobajouco/Desktop/Fred/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj",
+        "projectUniqueName": "/Users/fredericobajouco/Desktop/Fred/Fred_Programs/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj",
         "projectName": "theTasksApp",
-        "projectPath": "/Users/fredericobajouco/Desktop/Fred/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj",
+        "projectPath": "/Users/fredericobajouco/Desktop/Fred/Fred_Programs/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/theTasksApp.csproj",
         "packagesPath": "/Users/fredericobajouco/.nuget/packages/",
-        "outputPath": "/Users/fredericobajouco/Desktop/Fred/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/obj/",
+        "outputPath": "/Users/fredericobajouco/Desktop/Fred/Fred_Programs/WorkTests/iCognitus/theTasksApp/Backend-theTasksApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/fredericobajouco/.nuget/NuGet/NuGet.Config"
